@@ -9,7 +9,12 @@
 {{ else }}
   <meta name="robots" content="noodp" />
 {{ end }}
-<link rel="canonical" href="{{ .Permalink }}" />
+
+{{ if (isset .Params "canonical") }}
+  <link rel="canonical" href="{{ .Params.canonical }}" />
+{{- else -}}
+  <link rel="canonical" href="{{ .Permalink }}" />
+{{- end }}
 
 {{ template "_internal/google_analytics.html" . }}
 
